@@ -11,8 +11,8 @@ mongoose.connect(process.env.MONGO_DB_URI)
   .catch((err) => console.log("Server disconnected"))
     
 
+  app.use(cors()) //intilaze cors because server or api use in react app
 app.use(express.json()) //intilaize express in json
-app.use(cors()) //intilaze cors because server or api use in react app
 app.use('/api',route)
 
 
