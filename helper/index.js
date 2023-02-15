@@ -1,4 +1,4 @@
-const RequestAndResponseHandler = (msg,data,HandelResponse)=>{
+const RequestAndResponseHandler = (data,HandelResponse,msg)=>{
     if(msg){
         HandelResponse.status(404).json({data:msg})
     }else{

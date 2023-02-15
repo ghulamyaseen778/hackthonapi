@@ -6,32 +6,32 @@ const createSignUpData = (queryObject, res) => {
   try {
     UserSchema.create(queryObject, (err, data) => {
       if (err) {
-        RequestAndResponseHandler(MsgFunc.msg1, null, res)//check error
+        RequestAndResponseHandler( "", res,MsgFunc.msg1)//check error
       } else {
-        RequestAndResponseHandler(null, data, res)//check data and send response
+        RequestAndResponseHandler(data, res)//check data and send response
       }
     })
   } catch (error) {
-    RequestAndResponseHandler(MsgFunc.msg1, null, res)
+    RequestAndResponseHandler("", res,MsgFunc.msg1)
   }
 }
 const LoginData = ({ email,password }, res) => {
   try {
     UserSchema.findOne({ email }, (err) => {
       if (err) {
-        RequestAndResponseHandler(MsgFunc.msg1, null, res)//check error
+        RequestAndResponseHandler( "", res,MsgFunc.msg1)//check error
       } else {
         UserSchema.findOne({password}, (err, data) => {
           if (err) {
-            RequestAndResponseHandler(MsgFunc.msg1, null, res)//check error
+            RequestAndResponseHandler("", res,MsgFunc.msg1)//check error
           } else {
-            RequestAndResponseHandler(null, data, res)//check data and send response
+            RequestAndResponseHandler( data, res)//check data and send response
           }
         })
       }
     })
   } catch (error) {
-    RequestAndResponseHandler(MsgFunc.msg1, null, res)
+    RequestAndResponseHandler("", res,MsgFunc.msg1)
   }
 }
 
