@@ -41,14 +41,7 @@ const LoginData = ({ email,password }, res) => {
             RequestAndResponseHandler("", res,MsgFunc.msg1)//check error
           } else {
             const {user_name,email,password,mobile_no,joining,_id,role} = data
-          RequestAndResponseHandler({
-            token:_id,
-            userName:user_name,
-            email,
-            joining,
-            mobileNumber:mobile_no,
-            role:role?role:"user"
-          }, res)//check data and send response //check data and send response
+          RequestAndResponseHandler(data, res)//check data and send response //check data and send response
           }
         })
       }
