@@ -28,13 +28,7 @@ app.get("/api/token/:id", (req, res) => {
         })
       } else {                    
         const { user_name, email, password, mobile_no, joining, _id } = user
-        res.status(200).json({
-          token: _id,
-          userName: user_name,
-          email,
-          joining,
-          mobileNumber: mobile_no
-        })
+        res.status(200).json( user)
       }
     })
   }
