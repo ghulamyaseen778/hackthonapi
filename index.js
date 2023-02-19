@@ -6,6 +6,7 @@ const app = express() //initilaze express
 const PORT = process.env.PORT || 5000 //define server port
 const route = require('./routes')
 const userSchema = require("./Modals/userSchema")
+const caseSchema = require("./Modals/caseSchema")
 // //make mongodb connection using mongoose
 mongoose.connect(process.env.MONGO_DB_URI)
   .then((res) => console.log("Server connected"))
@@ -25,7 +26,7 @@ app.get("/api/token/:id", (req, res) => {
         res.status(404).json({
           data: "Something went wrong"
         })
-      } else {
+      } else {                    
         const { user_name, email, password, mobile_no, joining, _id } = user
         res.status(200).json({
           token: _id,
@@ -40,6 +41,29 @@ app.get("/api/token/:id", (req, res) => {
   catch (err) {
 
   }
+})
+
+app.post("/api/case",(req,res) => {
+  caseSchema.create(req.body,(err,data)=>{
+    if (err) {
+      res.status(404).json({
+        data: "Something went wrong"
+      })
+    } else {                    
+      res.status(200).json(data)
+    }
+  })
+})
+app.get("/api/all-case",(req,res) => {
+  caseSchema.find({},(err,data)=>{
+    if (err) {
+      res.status(404).json({
+        data: "Something went wrong"
+      })
+    } else {                    
+      res.status(200).json(data)
+    }
+  })
 })
 
 
