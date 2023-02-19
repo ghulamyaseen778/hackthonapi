@@ -15,6 +15,11 @@ const caseSchema = mongoose.Schema({
         required:true,
         trim:true,
     },
+    For:{
+        type:String,
+        required:true,
+        trim:true,
+    },
 },
 { timestamps: true })
 
